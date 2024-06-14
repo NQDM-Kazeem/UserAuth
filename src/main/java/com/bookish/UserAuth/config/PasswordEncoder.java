@@ -1,4 +1,4 @@
-package com.example.bookish.UserAuth.config;
+package com.bookish.UserAuth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
