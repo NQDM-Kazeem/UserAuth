@@ -1,4 +1,4 @@
-package com.example.bookish.UserAuth.user;
+package com.bookish.UserAuth.user;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
