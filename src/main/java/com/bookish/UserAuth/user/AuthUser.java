@@ -37,22 +37,22 @@ public class AuthUser implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private AuthUserRole authUserRole;
+    private UserRole userRole;
 
-    private Boolean locked;
-    private Boolean isActive;
+    private Boolean locked = false;
+    private Boolean isActive = false;
 
-    public AuthUser(String firstName, String lastName, String email, String password, AuthUserRole authUserRole) {
+    public AuthUser(String firstName, String lastName, String email, String password, UserRole userRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.authUserRole = authUserRole;
+        this.userRole = userRole;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(authUserRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
         return Collections.singletonList(authority);
     }
 
