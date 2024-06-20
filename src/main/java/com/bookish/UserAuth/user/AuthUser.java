@@ -8,14 +8,13 @@ import java.util.Collection;
 import java.util.Collections;
 
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import jakarta.persistence.SequenceGenerator;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,22 +36,22 @@ public class AuthUser implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private AuthUserRole authUserRole;
+    private UserRole userRole;
 
-    private Boolean locked;
-    private Boolean isActive;
+    private Boolean locked = false;
+    private Boolean isActive = false;
 
-    public AuthUser(String firstName, String lastName, String email, String password, AuthUserRole authUserRole) {
+    public AuthUser(String firstName, String lastName, String email, String password, UserRole userRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.authUserRole = authUserRole;
+        this.userRole = userRole;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(authUserRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
         return Collections.singletonList(authority);
     }
 
@@ -76,5 +75,3 @@ public class AuthUser implements UserDetails {
         return isActive;
     }
 }
-
-

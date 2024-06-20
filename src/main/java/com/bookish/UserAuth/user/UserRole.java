@@ -1,6 +1,6 @@
 package com.bookish.UserAuth.user;
 
-public enum AuthUserRole {
+public enum UserRole {
     USER,
     ADMIN,
 }
