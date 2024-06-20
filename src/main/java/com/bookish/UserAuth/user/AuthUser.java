@@ -8,20 +8,19 @@ import java.util.Collection;
 import java.util.Collections;
 
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import jakarta.persistence.SequenceGenerator;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "user_table")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -76,5 +75,3 @@ public class AuthUser implements UserDetails {
         return isActive;
     }
 }
-
-

@@ -5,7 +5,9 @@ import com.bookish.UserAuth.user.UserRole;
 import com.bookish.UserAuth.user.UserService;
 import com.bookish.UserAuth.utils.EmailValidator;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import lombok.AllArgsConstructor;
 
@@ -16,8 +18,8 @@ public class AuthService {
     private final UserService userService;
 
     public AuthUser register(AuthRequest authRequest) {
-        boolean isValidEmail = emailValidator.test(authRequest.getEmail());
-        if(!isValidEmail) throw new IllegalStateException("invalid email");
+        boolean isValidEmail = emailValidator.isValidEmail(authRequest.getEmail());
+        if(!isValidEmail) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid email");
 
         return userService.signUpUser(new AuthUser(
                 authRequest.getFirstName(),
