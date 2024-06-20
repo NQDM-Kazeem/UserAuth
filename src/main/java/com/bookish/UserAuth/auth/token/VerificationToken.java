@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "token_table")
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor

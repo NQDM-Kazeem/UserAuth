@@ -50,4 +50,8 @@ public class UserService implements UserDetailsService {
 
         return newUser;
     };
+
+    public void activateUser(String email) {
+        userRepository.activateAuthUser(email);
+    }
 }
